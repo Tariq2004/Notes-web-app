@@ -1,0 +1,26 @@
+<%- include("partials/header"); -%>
+
+
+<div class="homePage">
+  <h1>Home</h1>
+  <h5> <%=homeContent%> </h5>
+</div>
+
+<a href="publish"><button type="submit" name="button" class="btn btn-primary add">Add post</button></a>
+
+<%posts.forEach(function(post){%>
+  <div class="added">
+    <h1> <%=post.adress%> </h1>
+    <p>
+      <%= post.article.substring(0,80)%>
+      <a href="posts/<%= post.adress %>">Read more</a>
+    </p>
+  </div>
+<% })%>
+
+<form action="/home" method="post" class="rm">
+  <input type="text" name="remove" placeholder="To rmv all posts:clear" autocomplete="off">
+  <button class="btn btn-outline-info btn-sm" type="submit" name="button">remove</button>
+</form>
+
+<%- include("partials/footer"); -%>
